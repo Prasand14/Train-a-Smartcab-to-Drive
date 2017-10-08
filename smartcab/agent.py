@@ -164,15 +164,15 @@ class LearningAgent(Agent):
         maxReward = float("-inf")
         actionsForState = self.Q[state]
 
-        for actionKey in actionsForState:
-            if maxReward < actionsForState[actionKey]:
-                maxReward = actionsForState[actionKey]
+        for act_Key in actionsForState:
+            if maxReward < actionsForState[act_Key]:
+                maxReward = actionsForState[act_Key]
                 # replace the possible_max_actions with an array
                 # of one action
-                possible_max_actions = [actionKey]
-            elif maxReward == actionsForState[actionKey]:
+                possible_max_actions = [act_Key]
+            elif maxReward == actionsForState[act_Key]:
                 # add to the list of actions
-                possible_max_actions.append(actionKey)
+                possible_max_actions.append(act_Key)
 
         if len(possible_max_actions) > 0:
             return random.choice(possible_max_actions)

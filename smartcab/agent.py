@@ -193,11 +193,13 @@ class LearningAgent(Agent):
         
         if self.learning == True and state not in self.Q:
             self.Q[state] = self.default_dictionary()           
-                               
-        learning_rate = self.alpha
-        current_q_value = self.Q[state][action]
-        new_q_value = current_q_value + (learning_rate * (reward - current_q_value))
-        self.Q[state][action] = new_q_value
+        
+        if self.learning:
+            learning_rate = self.alpha
+            current_q_value = self.Q[state][action]
+            new_q_value = current_q_value + (learning_rate * (reward - current_q_value))
+            self.Q[state][action] = new_q_value
+        
         
         return
 
